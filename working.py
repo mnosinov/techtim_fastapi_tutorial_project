@@ -26,9 +26,9 @@ def get_item(item_id: int = Path(
     }
 
 
-@app.get("/get-by-name")
+@app.get("/get-by-name/{item_id}")
 #def get_item(test: int, name: Optional[str] = None):
-def get_item(*, name: Optional[str] = None, test: int):
+def get_item(*, item_id: int, name: Optional[str] = None, test: int):
     for item_id in inventory:
         if inventory[item_id]["name"] == name:
             return inventory[item_id]
