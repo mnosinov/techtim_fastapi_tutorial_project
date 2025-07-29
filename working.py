@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Path
+from typing import Optional
 
 app = FastAPI()
 
@@ -26,7 +27,8 @@ def get_item(item_id: int = Path(
 
 
 @app.get("/get-by-name")
-def get_item(name: str):
+#def get_item(test: int, name: Optional[str] = None):
+def get_item(*, name: Optional[str] = None, test: int):
     for item_id in inventory:
         if inventory[item_id]["name"] == name:
             return inventory[item_id]
